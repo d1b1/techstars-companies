@@ -58,6 +58,7 @@ export function App() {
 
   return (
     <div>
+
       <header className="header">
         <h1 className="header-title">
           <img src={headerImage} className="logo" />
@@ -70,7 +71,7 @@ export function App() {
         </div>
       </header>
 
-      <div className="container">
+      <div className="container-fluid">
 
         <CustomModal
           isOpen={isModalOpen}
@@ -83,15 +84,16 @@ export function App() {
           indexName="Techstars-Companies"
           future={future}
         >
-          <Configure hitsPerPage={10} />
+        
+        <Configure hitsPerPage={10} />
 
-          <div className="search-panel">
-            <div className="filters" >
+          <div className="row">
+            <div className="col-3 d-none d-lg-block">
 
-               <div className="filter-el">
-                <h4>
+            <div className="filter-el">
+                <h5>
                   Industry:
-                </h4>
+                </h5>
                 <RefinementList searchable="true" searchablePlaceholder="Enter a vertical..." attribute="industry_vertical" />
               </div>
 
@@ -129,19 +131,21 @@ export function App() {
                 </h4>
                 <RefinementList attribute="country" />
               </div>
-
+              
             </div>
-            <div className="search-panel__results">
+            <div className="col-md-9">
+
               <SearchBox placeholder="Enter a techstars company..." className="searchbox" />
 
-              <Hits hitComponent={Hit} onOpenModal={handleOpenModal}/>
+              <Hits hitComponent={Hit}/>
 
               <div className="pagination">
-                <Pagination />
+                <Pagination padding={2}/>
               </div>
+              
             </div>
+        </div>
 
-          </div>
         </InstantSearch>
       </div>
     </div>
@@ -175,44 +179,60 @@ const YearsBetween = ({ year }) => {
   return <span>{yearsBetween} years</span>;
 };
 
-function Hit({ hit }: HitProps, onOpenModal) {
+function Hit({ hit }: HitProps) {
   return (
     <article>
-      <a href={hit['website']} target="_blank">
-        <ImageWithFallback src={hit.logo_url} width="80" className="compLogo" alt={hit.name} />
-      </a>
-      <div className="element">
-        <h1>
-          <Highlight attribute="company_name" hit={hit} />
-        </h1>
-        <p>
-          <Highlight attribute="brief_description" hit={hit} />
-        </p>
-        <p>
-          <b>HQ Location:</b> {hit.state_province}, {hit.city}, <br />
-          <b>Industries:</b> {hit.industry_vertical},<br />
-          <b>Program:</b> {hit['program_names']}<br/>
-          <b>Age:</b> <YearsBetween year={hit.first_session_year} /><br />
-        </p>
-      </div>
-      <div className="info">
-         {hit['crunchbase_url'] ?
-            <a href={`https://${hit['crunchbase_url']}`} target="_blank">
-              <img src={crunchbaseLogo} className="crunch" />
-            </a>
-            : null}
+      <div className="row">
+        <div className="col-9">
 
-          {hit['linkedin_url'] ?
-            <a href={`https://${hit['linkedin_url']}`} target="_blank">
-              <img src={linkedInLogo} width="40" className="crunch" />
-            </a>
-            : null}
+          <a href={hit['website']} target="_blank">
+            <ImageWithFallback src={hit.logo_url} width="80" className="compLogo" alt={hit.name} />
+          </a>
 
-          {hit['twitter_url'] ?
-            <a href={`https://${hit['twitter_url']}`} target="_blank">
-              <img src={twitterLogo} className="crunch" width="40" />
-            </a>
-            : null}
+          <h4>
+            <Highlight attribute="company_name" hit={hit} />
+          </h4>
+
+          <p>
+            <Highlight attribute="brief_description" hit={hit} />
+          </p>
+          <p>
+            <b>HQ Location:</b> {hit.state_province}, {hit.city}, 
+            <b>Program:</b> {hit['program_names']} 
+  
+            <div className="m-2">
+              {(hit.industry_vertical || []).map((item, index) => (
+                <span key={index} className="badge bg-secondary me-1">
+                  {item}
+                </span>
+              ))}
+
+              <span className="badge bg-secondary me-1">
+              Since: {hit.first_session_year} (<YearsBetween year={hit.first_session_year} /> ago)
+              </span>
+            </div>
+          </p>
+
+        </div>
+        <div className="col-3 text-end">
+
+            {hit['crunchbase_url'] ?
+              <a href={`https://${hit['crunchbase_url']}`} target="_blank">
+                <img src={crunchbaseLogo} className="crunch" />
+              </a>
+              : null}
+            {hit['linkedin_url'] ?
+              <a href={`https://${hit['linkedin_url']}`} target="_blank">
+                <img src={linkedInLogo} width="40" className="crunch" />
+              </a>
+              : null}
+            {hit['twitter_url'] ?
+              <a href={`https://${hit['twitter_url']}`} target="_blank">
+                <img src={twitterLogo} className="crunch" width="40" />
+              </a>
+              : null}
+              
+        </div>
       </div>
     </article>
   );

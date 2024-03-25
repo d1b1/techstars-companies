@@ -14,6 +14,11 @@ em {
   font-style: normal;
 }
 
+.compLogo { 
+  float: left;
+  margin-bottom: 10px;
+}
+
 .header {
   display: flex;
   align-items: center;
@@ -82,9 +87,9 @@ em {
   font-size: 1.2rem;
 }
 
-.container {
+/* .container {
   padding: 1rem;
-}
+} */
 
 .crunch {
   border-radius: 10px 10px 10px 10px !important;
@@ -97,6 +102,7 @@ em {
   border: 1px solid #DFDFDF;
   padding: 10px;
   margin-bottom: 10px;
+  border-radius: 5px;
 }
 
 .filter-el h4 {
@@ -109,14 +115,14 @@ em {
   display: flex;
 }
 
-.filters {
+/* .filters {
   flex: 1;
   padding-right: 10px;
-}
+} */
 
-.search-panel__results {
+/* .search-panel__results {
   flex: 3;
-}
+} */
 
 .searchbox {
   margin-bottom: 2rem;
@@ -137,7 +143,7 @@ em {
 }
 
 .ais-Hits-item article {
-  display: flex;
+  display: block;
   width: 100%;
   overflow: hidden !important;
 }
