@@ -183,7 +183,7 @@ function Hit({ hit }: HitProps) {
   return (
     <article>
       <div className="row">
-        <div className="col-9">
+        <div className="col-10">
 
           <a href={hit['website']} target="_blank">
             <ImageWithFallback src={hit.logo_url} width="80" className="compLogo" alt={hit.name} />
@@ -214,7 +214,7 @@ function Hit({ hit }: HitProps) {
           </p>
 
         </div>
-        <div className="col-3 text-end">
+        <div className="col-2 text-end">
 
             {hit['crunchbase_url'] ?
               <a href={`https://${hit['crunchbase_url']}`} target="_blank">
