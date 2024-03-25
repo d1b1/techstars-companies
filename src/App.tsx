@@ -88,7 +88,7 @@ export function App() {
         <Configure hitsPerPage={10} />
 
           <div className="row">
-            <div className="col-3 d-none d-lg-block">
+            <div className="col-3 d-none d-md-block d-lg-block">
 
             <div className="filter-el">
                 <h5>
