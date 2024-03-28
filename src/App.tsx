@@ -185,7 +185,7 @@ function Hit({ hit }: HitProps) {
       <div className="row">
         <div className="col-10">
 
-          <a href={hit['website']} target="_blank">
+          <a href={`https://${hit['website']}`} target="_blank">
             <ImageWithFallback src={hit.logo_url} width="80" className="compLogo" alt={hit.name} />
           </a>
 
