@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import algoliasearch from 'algoliasearch/lite';
-import headerImage from './assets/logo.png';
 import fallbackImage from './assets/no-logo.png';
 import fallbackAvatarImage from './assets/missing-avatar.jpeg';
 import crunchbaseLogo from './assets/crunchbase.png';
@@ -17,7 +16,8 @@ import {
   Pagination,
   SearchBox,
   RefinementList,
-  HierarchicalMenu
+  HitsPerPage,
+  Stats
 } from 'react-instantsearch';
 
 import { Panel } from './Panel';
@@ -59,15 +59,21 @@ export function App() {
   return (
     <div>
 
+        <InstantSearch
+          searchClient={searchClient}
+          indexName="Techstars-Companies"
+          future={future}
+          routing={true}
+        >
+
       <header className="header">
         <h1 className="header-title">
-          <img src={headerImage} className="logo" />
+          Techstars Companies (v2) 
+          <Stats />
         </h1>
-        <p className="header-subtitle">
-          Find Companies by 'Program', 'year', 'status' or 'stage'.
-        </p>
         <div className="gh-btn">
-          <GitHubButton href="https://github.com/d1b1/techstar-search" data-color-scheme="no-preference: light; light: light; dark: dark;" data-size="large" data-show-count="true" aria-label="Star d1b1/techstar-search on GitHub">Star</GitHubButton>
+          
+          <GitHubButton href="https://github.com/d1b1/techstars-companies" data-color-scheme="no-preference: light; light: light; dark: dark;" data-size="large" data-show-count="true" aria-label="Star d1b1/techstar-companies on GitHub">Star</GitHubButton>
         </div>
       </header>
 
@@ -78,22 +84,16 @@ export function App() {
           onRequestClose={() => setIsModalOpen(false)}
           content={<p>Modal Content</p>}
         />
-
-        <InstantSearch
-          searchClient={searchClient}
-          indexName="Techstars-Companies"
-          future={future}
-        >
         
-        <Configure hitsPerPage={10} />
+        <Configure hitsPerPage={25} />
 
           <div className="row">
             <div className="col-3 d-none d-md-block d-lg-block">
 
             <div className="filter-el">
-                <h5>
+                <h4>
                   Industry:
-                </h5>
+                </h4>
                 <RefinementList searchable="true" searchablePlaceholder="Enter a vertical..." attribute="industry_vertical" />
               </div>
 
@@ -115,14 +115,14 @@ export function App() {
                 <h4>
                   Program City:
                 </h4>
-                <RefinementList searchable="true" attribute="accelerator" searchablePlaceholder="Enter program..." limit="5" />
+                <RefinementList searchable="true" attribute="city" searchablePlaceholder="Enter city..." limit="5" />
               </div>
 
               <div className="filter-el">
                 <h4>
                   State/Province:
                 </h4>
-                <RefinementList attribute="country" />
+                <RefinementList attribute="state_province" />
               </div>
 
               <div className="filter-el">
@@ -133,21 +133,19 @@ export function App() {
               </div>
               
             </div>
-            <div className="col-md-9">
+            <div className="col-md-9 p-4">
 
-              <SearchBox placeholder="Enter a techstars company..." className="searchbox" />
+              <SearchBox placeholder="Enter a company name..." className="searchbox" />
 
               <Hits hitComponent={Hit}/>
 
-              <div className="pagination">
-                <Pagination padding={2}/>
-              </div>
-              
+              <br/>
+              <Pagination padding={2}/>
+ 
             </div>
         </div>
-
-        </InstantSearch>
       </div>
+      </InstantSearch>
     </div>
   );
 }
@@ -195,10 +193,13 @@ function Hit({ hit }: HitProps) {
 
           <p>
             <Highlight attribute="brief_description" hit={hit} />
+            &nbsp;
+            { hit['website'] && <a href={`https://${hit['website']}`} target="_blank">https://{hit['website']}</a>}
           </p>
+
           <p>
-            <b>HQ Location:</b> {hit.state_province}, {hit.city}, 
-            <b>Program:</b> {hit['program_names']} 
+            <b>HQ Location:</b> {hit.state_province}, {hit.city},&nbsp;
+            <b>Program:</b> {hit['program_names']}&nbsp;
   
             <div className="m-2">
               {(hit.industry_vertical || []).map((item, index) => (
@@ -208,7 +209,7 @@ function Hit({ hit }: HitProps) {
               ))}
 
               <span className="badge bg-secondary me-1">
-              Since: {hit.first_session_year} (<YearsBetween year={hit.first_session_year} /> ago)
+                Since: {hit.first_session_year} (<YearsBetween year={hit.first_session_year} /> ago)
               </span>
             </div>
           </p>

@@ -184,3 +184,27 @@ button {
   background-color: white;
   border: 1px solid #DFDFDF;
 }
+
+.ais-RefinementList-item {
+  padding-left: 10px;
+}
+
+.ais-RefinementList-item--selected {
+  background-color: #edffdc;
+}
+
+.ais-RefinementList-item--selected:hover {
+  background-color: #b2ed78;
+}
+
+.ais-Stats-text {
+  float: left;
+  display: block;
+  position: relative;
+  font-size: 10px;
+  font-weight: light;
+}
+
+h4 {
+  font-size: 16px !important;
+}
