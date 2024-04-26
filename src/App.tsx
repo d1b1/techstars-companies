@@ -2,11 +2,7 @@ import React, { useState } from 'react';
 import algoliasearch from 'algoliasearch/lite';
 import fallbackImage from './assets/no-logo.png';
 import fallbackAvatarImage from './assets/missing-avatar.jpeg';
-import crunchbaseLogo from './assets/crunchbase.png';
-import linkedInLogo from './assets/linkedIn.png';
-import twitterLogo from './assets/twitter.png';
-import GitHubButton from 'react-github-btn';
-import InfoModal from './Modal_ValueProp';
+import InfoModal from './Modal_Info';
 import ExportModal from './Modal_Export';
 
 import {
@@ -17,12 +13,11 @@ import {
   Pagination,
   SearchBox,
   RefinementList,
-  HitsPerPage,
   Stats,
   SortBy
 } from 'react-instantsearch';
 
-import { Panel } from './Panel';
+
 import type { Hit } from 'instantsearch.js';
 import './App.css';
 

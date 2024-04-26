@@ -82,31 +82,23 @@ const CustomModal = ({ isOpen, onRequestClose, content }) => (
         </p>
       </div>
     </div>
-
     <div className="alertBox">
       <div className="row">
-        <div className="col-1">
-          <img src="https://stephansmith.solutions/assets/clients/stephan-smith-avatar.png" className="avatar-border" width="100" />
+        <div className="col-md-2">
+          <img src="https://stephansmith.solutions/assets/clients/stephan-smith-avatar.png" className="img-thumbnail img-fluid avatar-border" kwidth="200" />
         </div>
-        <div className="col-9">
-          <p>
-            Hi, I'm Stephan Smith, a fractional CTO (+CISO). I help CEOs make better technology decisions. I code and 
-            think about code, and have found that startups need help getting <b>perspective</b> and <b>context</b> on 
+        <div className="col-md-10">
+          <p className="mt-3">
+            Hi, I'm Stephan Smith, a <a href="https://StephanSmith.solutions/what_is_a_fractional_cto">fractional</a> CTO (+CISO). I help CEOs make better technology decisions. I code and 
+            think about code, and have found that startups value options for getting <b>perspective</b> and <b>context</b> on 
             they technologies and patterns they use to achieve their revenue goals.
           </p>
           <button className="btn btn-outline-dark btn-sm w-sm-100 justify-content" onClick={() => window.open('https://StephanSmith.solutions/', "_blank")}>
             Learn More..
           </button>
-
         </div>
       </div>
-
     </div>
-
-
-
-
-
   </Modal>
 );
 
