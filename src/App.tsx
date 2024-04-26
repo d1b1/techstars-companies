@@ -93,8 +93,7 @@ export function App() {
             <Stats />
           </h1>
           <button className="btn btn-sm btn-outline-dark avatar-btn headerBtn" onClick={openModal}>
-            <img src="https://stephansmith.solutions/assets/clients/stephan-smith-avatar.png" className="avatar_img" />
-            Startup Tools
+            Startup Use Cases!
           </button>
         </header>
 

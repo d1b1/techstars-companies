@@ -7,7 +7,7 @@ const CustomModal = ({ isOpen, onRequestClose, content }) => (
     <button className="btn btn-success" onClick={onRequestClose}>
       Find Some Startups &rarr;
     </button>
-    <br/>
+    <br />
     <div className="row mt-3">
       <div className="offset-0 col-90">
         <h2>
@@ -18,7 +18,7 @@ const CustomModal = ({ isOpen, onRequestClose, content }) => (
           Data is valuable in itself! Startups need to be intentional about
           how they use their time. This dataset is a good starting
           point for a number of startup related activities; <b>finding investors,
-          finding early customers, and learning how to find customers.</b>
+            finding early customers, and learning how to find customers.</b>
         </p>
         <hr className="mt-5" />
         <h3>
@@ -35,9 +35,9 @@ const CustomModal = ({ isOpen, onRequestClose, content }) => (
             <div className="col-md-6">
               <p>
                 Use your network to get introductions to their founders, ask for
-                help, advise and warm intros to their investors. Startup founders know 
-                the pain of finding investors, so are very willing to help. They 
-                can walk you in the door and get you visibility that would take 
+                help, advise and warm intros to their investors. Startup founders know
+                the pain of finding investors, so are very willing to help. They
+                can walk you in the door and get you visibility that would take
                 a lot longer on your own.
               </p>
             </div>
@@ -55,7 +55,7 @@ const CustomModal = ({ isOpen, onRequestClose, content }) => (
           <div className="row">
             <div className="col-12">
               <b>Pro Tip:</b> The Managing Director (MD) of Techstars program can be very helpful.
-              MDs are super connectors, and know everyone in their program ecosystem. You, as a 
+              MDs are super connectors, and know everyone in their program ecosystem. You, as a
               new startup founder are their future dealflow. Reach out.
             </div>
           </div>
@@ -82,6 +82,31 @@ const CustomModal = ({ isOpen, onRequestClose, content }) => (
         </p>
       </div>
     </div>
+
+    <div className="alertBox">
+      <div className="row">
+        <div className="col-1">
+          <img src="https://stephansmith.solutions/assets/clients/stephan-smith-avatar.png" className="avatar-border" width="100" />
+        </div>
+        <div className="col-9">
+          <p>
+            Hi, I'm Stephan Smith, a fractional CTO (+CISO). I help CEOs make better technology decisions. I code and 
+            think about code, and have found that startups need help getting <b>perspective</b> and <b>context</b> on 
+            they technologies and patterns they use to achieve their revenue goals.
+          </p>
+          <button className="btn btn-outline-dark btn-sm w-sm-100 justify-content" onClick={() => window.open('https://StephanSmith.solutions/', "_blank")}>
+            Learn More..
+          </button>
+
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+
   </Modal>
 );
 
