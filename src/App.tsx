@@ -127,7 +127,7 @@ export function App() {
               </div>
               <div className="filter-el">
                 <h4>
-                  What Techstars program?
+                  Accelerator/Program?
                 </h4>
                 <RefinementList searchable="true" searchablePlaceholder="Enter a program name..." attribute="program_names" limit="5" />
               </div>
