@@ -25,4 +25,4 @@ npm install
 npm start
 ```
 
-<img src="assets/screenshot-b.png" height="100">
+<img src="assets/screenshot.png" height="100">
