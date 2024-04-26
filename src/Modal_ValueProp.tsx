@@ -7,6 +7,7 @@ const CustomModal = ({ isOpen, onRequestClose, content }) => (
     <button className="btn btn-success" onClick={onRequestClose}>
       Find Some Startups &rarr;
     </button>
+    <br/>
     <div className="row mt-3">
       <div className="offset-0 col-90">
         <h2>
@@ -42,8 +43,8 @@ const CustomModal = ({ isOpen, onRequestClose, content }) => (
             </div>
             <div className="col-md-6">
               <ol>
-                <li>Filter by vertical</li>
-                <li>Filter by age.</li>
+                <li>Filter by company vertical/industry.</li>
+                <li>Filter by company age.</li>
                 <li>Search funding status on Crunchbase.</li>
                 <li>Look for a pattern and then network your way in.</li>
                 <li>Build a target list or ICP.</li>
